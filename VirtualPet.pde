@@ -20,14 +20,17 @@ void buildShapes(){
 }
 void buildAddons(){
   fill(0,0,0);
-  ellipse(ellipseX,ellipseY + 120,15,15); //base
-  ellipse(ellipseX,ellipseY + 35,15,15);  //center
-  ellipse(ellipseX,ellipseY + 75, 15,15);  //top
+  ellipse(ellipseX,ellipseY + 120,15,15); //base button
+  ellipse(ellipseX,ellipseY + 35,15,15);  //center button
+  ellipse(ellipseX,ellipseY + 75, 15,15);  //top button
 }
+//original left x = 50;
+//original right x = 250;
 void buildLimbs(){
-  rotate(45);
-  fill(255,0,0);
-  rect(50,250,50,250);
+  rotate(HALF_PI/2);
+  fill(150,75,0);
+  rect(20,50,100,10); //left arm
+ // rect(150,250,100,10); //right arm
 }
 
 
@@ -38,5 +41,3 @@ void mouseMoved(){
   background(155,255,255);
 }
 */
-
-
