@@ -27,9 +27,19 @@ void buildAddons(){
 //original left x = 50;
 //original right x = 250;
 void buildLimbs(){
+  buildLeftArm();
+  buildRightArm();
+}
+void buildLeftArm(){
   rotate(HALF_PI/2);
   fill(150,75,0);
-  rect(20,50,100,10); //left arm
+  rect(150,20,100,10); //left arm
+ // rect(150,250,100,10); //right arm
+}
+void buildRightArm(){
+ // rotate((HALF_PI));
+  fill(150,75,0);
+  rect(350,0,100,10); //right arm
  // rect(150,250,100,10); //right arm
 }
 
@@ -41,3 +51,4 @@ void mouseMoved(){
   background(155,255,255);
 }
 */
+
