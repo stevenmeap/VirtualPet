@@ -1,6 +1,9 @@
+/*
 import processing.serial.*;
 import cc.arduino.*;
 Arduino arduino;
+*/
+// uncomment when arduino works
 
 boolean hasArduino = false;
 boolean hatVisible = false;
