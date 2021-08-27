@@ -24,7 +24,7 @@ int y = 0;
 void draw(){
   counter++;
   background(144);
-  timer();
+  //timer();
   if (mousePressed){
     pressed = true;
     y = 50;
