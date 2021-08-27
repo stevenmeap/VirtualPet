@@ -33,9 +33,11 @@ void draw(){
     pressed = false;
     y = 150;
   }
+  /*
   if (hasArduino)
     y = arduino.analogRead(5);
- // System.out.println(y);
+    */
+//UNCOMMENT WHEN ARDUINO WORKS
   buildShapes();
   buildAddons();
   makeHat();
