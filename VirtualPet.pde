@@ -134,7 +134,6 @@ void buildLeftArm(){
         rect(150, leftY,100,10); //left arm
     }
   }
- // rect(150,250,100,10); //right arm
 }
 /**
 RIGHT ARM
@@ -153,8 +152,6 @@ void buildRightArm(){
    
   }
   if (hasArduino || pressed){
-    if(rotate)
-      // rotate(PI/4);
     if (visible){
       fill(150,75,0);
       rect(350,rightY,100,10); //right arm
