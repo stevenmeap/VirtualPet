@@ -3,6 +3,7 @@ import cc.arduino.*;
 Arduino arduino;
 
 boolean hasArduino = false;
+boolean hatVisible = false;
 long counter = 0;
 
 void setup(){
@@ -18,6 +19,14 @@ void draw(){
   counter++;
   background(144);
   timer();
+  if (mousePressed){
+    pressed = true;
+    y = 50;
+   
+  }else{
+    pressed = false;
+    y = 150;
+  }
   if (hasArduino)
     y = arduino.analogRead(5);
  // System.out.println(y);
@@ -35,19 +44,24 @@ void timer(){
     fill(0,0,0);
     text("Oh hi! You are obviously not a stranger", 5,30);
     text("No stranger danger here", 5, 40);
-    text("being a snowman my memory melts away", 220,50);
-    text("So I have no idea who you are!", 220,60);
+    text("I have no idea who you are!", 6,80);
     return;
   }
   if (counter >= 500 && counter <= 1000){
     text("Nothing to see here... Just a snowman", 50, 50);
   }
-  if (counter > 1500){
+  if (counter > 1500 && counter < 2000){
     text("seriously... no magic to be found here", 50,50);
     text("Just your average man made out of snow", 50,100);
   }
-  if (counter > 2000)
+  if (counter > 2500){
+    text("You know... I'm not going to show myself",50,50);
+    text("You need to know the password",50,100);
+  }
+  if (counter > 3000){
     counter = 0;
+  }
+   
 }
 
 void buildShapes(){
@@ -104,7 +118,7 @@ void buildLeftArm(){
     rotate = false;
     visible = false;
   }
-  if (hasArduino){
+  if (hasArduino || pressed){
     if(rotate)
       rotate(PI / 4);
     if (visible){
@@ -130,7 +144,7 @@ void buildRightArm(){
     visible = false;
    
   }
-  if (hasArduino){
+  if (hasArduino || pressed){
     if(rotate)
       // rotate(PI/4);
     if (visible){
@@ -139,7 +153,6 @@ void buildRightArm(){
    }
   }
 }
-boolean hatVisible = false;
 int hatBaseY = 0;
 int hatTopY = 0;
 
@@ -148,29 +161,24 @@ HAT
 **/
 void makeHat(){
   fill(0,0,0);
-  if(hasArduino){
-    if(y < 100){
-      hatVisible = true;
-      if(hatBaseY < 100)
-        hatBaseY++;
-      if(hatTopY < 35)
-        hatTopY++;
-    }else{
-      hatBaseY = 0;
-      hatTopY = 0;
-      hatVisible = false;
-    }
-    if(hatVisible){
-      rect(150, hatBaseY, 100, 20);
+   if(y < 100){
+     hatVisible = true;
+     if(hatBaseY < 100)
+       hatBaseY++;
+     if(hatTopY < 35)
+       hatTopY++;
+   }else{
+     hatBaseY = 0;
+     hatTopY = 0;
+     hatVisible = false;
+   }
+   if(hatVisible){
+     rect(150, hatBaseY, 100, 20);
       rect(175, hatTopY, 50, 70);
     }
-  }
-  else{
-  rect(150, 100, 100, 20);
-  rect(175, 35, 50, 70);
-  }
 }
 
+boolean pressed = false;
 
 
 /*
