@@ -1,8 +1,8 @@
 /*
-import processing.serial.*;
 import cc.arduino.*;
 Arduino arduino;
 */
+import processing.serial.*;
 // uncomment when arduino works
 
 boolean hasArduino = false;
