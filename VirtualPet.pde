@@ -6,7 +6,7 @@ Arduino arduino;
 
 boolean hasArduino = false;
 boolean hatVisible = false;
-long counter = 0;
+long counter = 150;
 
 void setup(){
   size(400, 400);
