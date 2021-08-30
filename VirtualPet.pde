@@ -137,6 +137,7 @@ void buildLeftArm(){
   }
   */
   //ENABLE WHEN ANIMATIONS WORK ON GITHUB
+  rotate(PI / 4);
   fill(150,75,0);
   rect(150, 20,100,10); //left arm
   
