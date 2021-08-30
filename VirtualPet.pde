@@ -39,9 +39,9 @@ void draw(){
     */
 //UNCOMMENT WHEN ARDUINO WORKS
   buildShapes();
-  //buildAddons();
-  //makeHat();
-  //buildLimbs();
+  buildAddons();
+  makeHat();
+  buildLimbs();
 }
 int ellipseX = 200;
 int ellipseY = 200;
