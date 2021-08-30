@@ -30,7 +30,7 @@ void draw(){
   buildShapes();
   buildAddons();
   makeHat();
-  buildLimbs();
+ // buildLimbs();
 }
 int ellipseX = 200;
 int ellipseY = 200;
