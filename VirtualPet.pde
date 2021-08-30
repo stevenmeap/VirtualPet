@@ -6,7 +6,7 @@ Arduino arduino;
 
 boolean hasArduino = false;
 boolean hatVisible = false;
-long counter = 150;
+long counter = 0;
 
 void setup(){
   size(400, 400);
@@ -18,7 +18,7 @@ void setup(){
   */
  
 }
-int y = 0;
+int y = 150;
 void draw(){
   counter++;
   background(144);
