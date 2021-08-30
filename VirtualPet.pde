@@ -115,6 +115,7 @@ boolean visible = false;
 LEFT ARM
 **/
 void buildLeftArm(){
+/*
   if (y < 100){
     visible = true; 
     if(leftY>=20){
@@ -134,11 +135,17 @@ void buildLeftArm(){
         rect(150, leftY,100,10); //left arm
     }
   }
+  */
+  //ENABLE WHEN ANIMATIONS WORK ON GITHUB
+  fill(150,75,0);
+  rect(150, 20,100,10); //left arm
+  
 }
 /**
 RIGHT ARM
 **/
 void buildRightArm(){
+/*
     if (y < 100){
     visible = true; 
     if(rightY>=0){
@@ -157,6 +164,11 @@ void buildRightArm(){
       rect(350,rightY,100,10); //right arm
    }
   }
+  */
+  //ENABLE WHEN GITHUB ANIMATIONS WORK!!!
+  fill(150,75,0);
+  rect(350,0,100,10); //right arm
+  
 }
 int hatBaseY = 0;
 int hatTopY = 0;
@@ -166,6 +178,7 @@ HAT
 **/
 void makeHat(){
   fill(0,0,0);
+  /*
    if(y < 100){
      hatVisible = true;
      if(hatBaseY < 100)
@@ -181,6 +194,11 @@ void makeHat(){
      rect(150, hatBaseY, 100, 20);
       rect(175, hatTopY, 50, 70);
     }
+    /*
+    //ENABLE WHEN ANIMATIONS WORK ON GITHUB
+    rect(150, 100, 100, 20);
+    rect(175, 35, 50, 70);
+    
 }
 
 boolean pressed = false;
