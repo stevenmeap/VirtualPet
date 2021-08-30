@@ -1,9 +1,6 @@
-/*
+import processing.serial.*;
 import cc.arduino.*;
 Arduino arduino;
-*/
-import processing.serial.*;
-// uncomment when arduino works
 
 boolean hasArduino = false;
 boolean hatVisible = false;
@@ -11,33 +8,20 @@ long counter = 0;
 
 void setup(){
   size(400, 400);
-  /*
   if (Arduino.list() != null && Arduino.list().length > 1){
       hasArduino = true;
       arduino = new Arduino(this, Arduino.list()[1], 57600);
   }//change the [0] to a [1] or [2] etc. if your program doesn't work
-  */
-  // Uncomment when arduino works please!
  
 }
 int y = 0;
 void draw(){
   counter++;
   background(144);
-  //timer();
-  if (mousePressed){
-    pressed = true;
-    y = 50;
-   
-  }else{
-    pressed = false;
-    y = 150;
-  }
-  /*
+ // timer();
+
   if (hasArduino)
     y = arduino.analogRead(5);
-    */
-//UNCOMMENT WHEN ARDUINO WORKS
   buildShapes();
   buildAddons();
   makeHat();
@@ -115,7 +99,6 @@ boolean visible = false;
 LEFT ARM
 **/
 void buildLeftArm(){
-/*
   if (y < 100){
     visible = true; 
     if(leftY>=20){
@@ -135,18 +118,16 @@ void buildLeftArm(){
         rect(150, leftY,100,10); //left arm
     }
   }
-  */
-  //ENABLE WHEN ANIMATIONS WORK ON GITHUB
+  /*
   rotate(PI / 4);
   fill(150,75,0);
   rect(150, 20,100,10); //left arm
-  
+  */
 }
 /**
 RIGHT ARM
 **/
 void buildRightArm(){
-/*
     if (y < 100){
     visible = true; 
     if(rightY>=0){
@@ -165,11 +146,10 @@ void buildRightArm(){
       rect(350,rightY,100,10); //right arm
    }
   }
-  */
-  //ENABLE WHEN GITHUB ANIMATIONS WORK!!!
+  /*
   fill(150,75,0);
   rect(350,0,100,10); //right arm
-  
+  */
 }
 int hatBaseY = 0;
 int hatTopY = 0;
@@ -179,7 +159,6 @@ HAT
 **/
 void makeHat(){
   fill(0,0,0);
-  /*
    if(y < 100){
      hatVisible = true;
      if(hatBaseY < 100)
@@ -195,20 +174,19 @@ void makeHat(){
      rect(150, hatBaseY, 100, 20);
       rect(175, hatTopY, 50, 70);
     }
-    */
-    //ENABLE WHEN ANIMATIONS WORK ON GITHUB
+    /*
     rect(150, 100, 100, 20);
     rect(175, 35, 50, 70);
-    
+    */
+}
+
+void mousePressed(){
+    pressed = true;
+    y = 50;
+}
+void mouseReleased(){
+    pressed = false;
+    y = 150;
 }
 
 boolean pressed = false;
-
-
-/*
-void mouseMoved(){
-  ellipseX = mouseX;
-  ellipseY = mouseY;
-  background(155,255,255);
-}
-*/
