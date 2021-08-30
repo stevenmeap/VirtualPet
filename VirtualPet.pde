@@ -194,7 +194,7 @@ void makeHat(){
      rect(150, hatBaseY, 100, 20);
       rect(175, hatTopY, 50, 70);
     }
-    /*
+    */
     //ENABLE WHEN ANIMATIONS WORK ON GITHUB
     rect(150, 100, 100, 20);
     rect(175, 35, 50, 70);
