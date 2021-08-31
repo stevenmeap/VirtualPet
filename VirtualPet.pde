@@ -20,7 +20,7 @@ int y = 150;
 void draw(){
   counter++;
   background(144);
- // timer();
+  //timer();
 
   if (hasArduino)
     y = arduino.analogRead(5);
@@ -92,7 +92,7 @@ void buildFace(){
 void buildLimbs(){
   pushMatrix();
   buildLeftArm();
- // buildRightArm();
+  buildRightArm();
   popMatrix();
 }
 int rightY = 345;
@@ -153,9 +153,8 @@ void buildRightArm(){
     if (y < 100){
     visible = true; 
     if(rightY>=200){
-       rotate = true;
        rightY--;
-    }
+    }else rotate = true;
     }else{
     rightY = 345;
     rotate = false;
