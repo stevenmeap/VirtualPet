@@ -8,10 +8,12 @@ long counter = 0;
 
 void setup(){
   size(400, 400);
+  /*
   if (Arduino.list() != null && Arduino.list().length > 1){
       hasArduino = true;
       arduino = new Arduino(this, Arduino.list()[1], 57600);
   }//change the [0] to a [1] or [2] etc. if your program doesn't work
+  */
  
 }
 int y = 150;
