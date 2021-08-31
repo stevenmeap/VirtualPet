@@ -1,8 +1,6 @@
 import processing.serial.*;
-/*
 import cc.arduino.*;
 Arduino arduino;
-*/
 
 boolean hasArduino = false;
 boolean hatVisible = false;
@@ -10,12 +8,10 @@ long counter = 0;
 
 void setup(){
   size(400, 400);
-  /*
   if (Arduino.list() != null && Arduino.list().length > 1){
       hasArduino = true;
       arduino = new Arduino(this, Arduino.list()[1], 57600);
   }//change the [0] to a [1] or [2] etc. if your program doesn't work
-  */
  
 }
 int y = 150;
@@ -23,14 +19,13 @@ void draw(){
   counter++;
   background(144);
  // timer();
-/*
+
   if (hasArduino)
     y = arduino.analogRead(5);
-    */
   buildShapes();
   buildAddons();
   makeHat();
- // buildLimbs();
+  buildLimbs();
 }
 int ellipseX = 200;
 int ellipseY = 200;
@@ -93,36 +88,54 @@ void buildFace(){
 //original left x = 50;
 //original right x = 250;
 void buildLimbs(){
+  pushMatrix();
   buildLeftArm();
   buildRightArm();
+  popMatrix();
 }
 int rightY = 345;
 int leftY = 345;
 boolean rotate = false;
 boolean visible = false;
+boolean opposite = true;
 /**
 LEFT ARM
 **/
+int radians = 45;
 void buildLeftArm(){
+  pushMatrix();
   if (y < 100){
     visible = true; 
-    if(leftY>=20){
-       rotate = true;
+    if(leftY>=200){
+      rotate = false;
        leftY--;
-    }
+    }else rotate = true;
   }else{
     leftY = 345;
     rotate = false;
     visible = false;
   }
   if (hasArduino || pressed){
-    if(rotate)
-      rotate(PI / 4);
+    //  rotate(PI / 4);
     if (visible){
         fill(150,75,0);
-        rect(150, leftY,100,10); //left arm
+        translate(150,leftY);
+        rotate(radians(radians));
+        if(rotate){
+          if(radians > 45){
+            opposite = true;
+          }
+          if(radians < -75)
+            opposite = false;
+          if(opposite)
+            radians--;
+          else radians++;
+        }
+        rect(0, 0,-100,10); //left arm
     }
   }
+  popMatrix();
+
   /*
   rotate(PI / 4);
   fill(150,75,0);
@@ -132,10 +145,12 @@ void buildLeftArm(){
 /**
 RIGHT ARM
 **/
+int staticRadians = 45;
 void buildRightArm(){
+  pushMatrix();
     if (y < 100){
     visible = true; 
-    if(rightY>=0){
+    if(rightY>=200){
        rotate = true;
        rightY--;
     }
@@ -148,9 +163,13 @@ void buildRightArm(){
   if (hasArduino || pressed){
     if (visible){
       fill(150,75,0);
-      rect(350,rightY,100,10); //right arm
+      translate(250, rightY);
+      if (rotate)
+        rotate(radians(staticRadians));
+      rect(0,0,100,10); //right arm
    }
   }
+  popMatrix();
   /*
   fill(150,75,0);
   rect(350,0,100,10); //right arm
