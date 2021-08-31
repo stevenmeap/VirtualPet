@@ -92,7 +92,7 @@ void buildFace(){
 void buildLimbs(){
   pushMatrix();
   buildLeftArm();
-  buildRightArm();
+//  buildRightArm();
   popMatrix();
 }
 int rightY = 345;
