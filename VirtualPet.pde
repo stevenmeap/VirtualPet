@@ -8,32 +8,40 @@ long counter = 0;
 
 void setup(){
   size(400, 400);
-  /*
+ 
+  
   if (Arduino.list() != null && Arduino.list().length > 1){
       hasArduino = true;
       arduino = new Arduino(this, Arduino.list()[1], 57600);
   }//change the [0] to a [1] or [2] etc. if your program doesn't work
-  */
+  
  
 }
+int leftButton;
+int rightButton;
 int y = 150;
 void draw(){
   counter++;
-  background(144);
-  //timer();
-
+  background(155);
+  timer();
   if (hasArduino)
     y = arduino.analogRead(5);
   buildShapes();
   buildAddons();
   makeHat();
   buildLimbs();
+  leftButton = arduino.analogRead(1);
+  rightButton = arduino.analogRead(6);
+  drawTie();
 }
 int ellipseX = 200;
 int ellipseY = 200;
 
 void timer(){
-  System.out.println(counter);
+  if(tie){
+    text("Woahhhh! I have a tie now!", 225, 50);
+    text("I didn't even know ties existed!", 250, 70);
+  }
   if(y < 100){
     fill(0,0,0);
     text("Oh hi! You are obviously not a stranger", 5,30);
@@ -41,18 +49,18 @@ void timer(){
     text("I have no idea who you are!", 6,80);
     return;
   }
-  if (counter >= 500 && counter <= 1000){
+  if (counter >= 250 && counter <= 500){
     text("Nothing to see here... Just a snowman", 50, 50);
   }
-  if (counter > 1500 && counter < 2000){
+  if (counter > 1000 && counter < 1500){
     text("seriously... no magic to be found here", 50,50);
     text("Just your average man made out of snow", 50,100);
   }
-  if (counter > 2500){
+  if (counter > 2000){
     text("You know... I'm not going to show myself",50,50);
     text("You need to know the password",50,100);
   }
-  if (counter > 3000){
+  if (counter > 2500){
     counter = 0;
   }
    
@@ -63,6 +71,37 @@ void buildShapes(){
   ellipse(ellipseX,ellipseY + 150,150,150); //base
   ellipse(ellipseX,ellipseY + 35,125,125);  //center
   ellipse(ellipseX,ellipseY - 40, 100, 100);  //top
+}
+int max1 = ellipseY + 35;
+int max2 = ellipseY + 45;
+int max3 = ellipseY + 15;
+int y1 = 35;
+int y2 = 45;
+int y3 = 15;
+boolean tie = false;
+void drawTie(){
+  if(rightButton > 0){
+    tie = true;
+    if(max1 > y1)
+      y1++;
+    if(max2 > y2)
+      y2++;
+    if(max3 > y3)  
+      y3++;
+  }else{
+    tie = false;
+    y1 = 35;
+    y2 = 45;
+    y3 = 15;
+  }
+  if(!tie)
+    return;
+  pushMatrix();
+  fill(0,0,0);
+  ellipse(ellipseX, y1, 25, 25); //center bow
+  triangle(ellipseX -5, y1, ellipseX - 30, y2, ellipseX -30, y3);
+  triangle(ellipseX +5, y1, ellipseX + 30, y2, ellipseX +30, y3);
+  popMatrix();
 }
 /**
 BUTTONS+FACE
@@ -91,8 +130,8 @@ void buildFace(){
 //original right x = 250;
 void buildLimbs(){
   pushMatrix();
-//  buildLeftArm();
- // buildRightArm();
+  buildLeftArm();
+  buildRightArm();
   popMatrix();
 }
 int rightY = 345;
@@ -138,11 +177,6 @@ void buildLeftArm(){
   }
   popMatrix();
 
-  /*
-  rotate(PI / 4);
-  fill(150,75,0);
-  rect(150, 20,100,10); //left arm
-  */
 }
 /**
 RIGHT ARM
@@ -171,10 +205,6 @@ void buildRightArm(){
    }
   }
   popMatrix();
-  /*
-  fill(150,75,0);
-  rect(350,0,100,10); //right arm
-  */
 }
 int hatBaseY = 0;
 int hatTopY = 0;
@@ -204,6 +234,8 @@ void makeHat(){
     rect(175, 35, 50, 70);
     */
 }
+
+
 
 void mousePressed(){
     pressed = true;
